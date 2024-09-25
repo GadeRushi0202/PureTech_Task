@@ -1,0 +1,60 @@
+﻿@model IEnumerable<CRUD_App_PureTech_Task.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Prod_Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prod_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prod_price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prod_Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prod_imageUrl)
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prod_Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prod_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prod_price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prod_Description)
+            </td>
+                <td>
+                    
+                    <img src="@Url.Content(item.Prod_imageUrl)" height="200" width="200"/>
+                </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {  id=item.Prod_Id  }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.Prod_Id  }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.Prod_Id  })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
